@@ -11,7 +11,7 @@ const successReducer = (state = false, action) => {
             return true
 
         default:
-            return false
+            return state
 
     }
 }
