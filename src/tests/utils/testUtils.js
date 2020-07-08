@@ -13,9 +13,6 @@ export const storeFactory = (initialState) => {
     return createStore(rootReducer, initialState)
 }
 
-
-
-
 /**
  * 
  * @param {ShallowWrapper} wrapper - Enzyme shallow wrapper.
