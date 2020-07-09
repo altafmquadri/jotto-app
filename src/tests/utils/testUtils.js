@@ -1,16 +1,19 @@
 import checkPropTypes from 'check-prop-types'
-import {createStore} from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import { middlewares } from '../../store/configureStore'
 import rootReducer from '../../reducers/index'
 
 
 /**
  * Create a testing store with imported reducers, middleware, and initial state
+ * globals: rootReducer, middlewares
  * @param {object} initialState -Initial state for store
  * @function store Factory
  * @returns {Store} - Redux store
  */
 export const storeFactory = (initialState) => {
-    return createStore(rootReducer, initialState)
+    const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+    return createStoreWithMiddleware(rootReducer, initialState)
 }
 
 /**
@@ -26,9 +29,9 @@ export const findByTestAttr = (wrapper, val) => (
 
 export const checkProps = (component, conformingProps) => {
     const propError = checkPropTypes(
-        component.propTypes, 
-        conformingProps, 
-        'prop', 
+        component.propTypes,
+        conformingProps,
+        'prop',
         component.name)
-        expect(propError).toBeUndefined()
+    expect(propError).toBeUndefined()
 }
