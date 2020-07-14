@@ -5,13 +5,14 @@ import { guessWord } from '../actions/actionTypes'
 
 export class UnconnectedInput extends Component {
     state = {
-        currentGuess: null
+        currentGuess: ''
     }
 
     submitGuessedWord = e => {
         e.preventDefault()
         const guessedWord = this.state.currentGuess
         if (guessedWord && guessedWord.length > 0) this.props.guessWord(guessedWord)
+        this.setState({ currentGuess: '' })
     }
 
 
@@ -30,7 +31,7 @@ export class UnconnectedInput extends Component {
                         data-test="submit-button"
                         className="btn btn-primary mb-2"
                         onClick={this.submitGuessedWord}
-                        type="submit"></button>
+                        type="submit">Submit</button>
                 </form >
             )
         return (

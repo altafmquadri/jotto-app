@@ -20,6 +20,7 @@ const GuessedWords = (props) => {
                             <tr>
                                 <th>Guess</th>
                                 <th>Matching Letters</th>
+                                <td>Number of Guesses</td>
                             </tr>
                         </thead>
                         <tbody>

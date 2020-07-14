@@ -11,7 +11,7 @@ describe('getSecretWord action creator', () => {
         moxios.uninstall()
     })
     test('adds response word to state', () => {
-        const secretWord = 'party'
+        const secretWord = ['party']
         const store = storeFactory()
 
         moxios.wait(() => {
@@ -24,7 +24,7 @@ describe('getSecretWord action creator', () => {
         return store.dispatch(getSecretWord())
             .then(() => {
                 const newState = store.getState() //since i am using a different api, might need to change newState to be store.getState()[0] since an array is returned
-                expect(newState.secretWord).toBe(secretWord)
+                expect(newState.secretWord).toBe(secretWord[0])
             })
     })
 })

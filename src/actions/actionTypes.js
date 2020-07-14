@@ -41,7 +41,7 @@ export const getSecretWord = () => {
             .then(response => {
                 dispatch({
                     type: actionTypes.SET_SECRET_WORD,
-                    payload: response.data
+                    payload: response.data[0] //changed this to mock api
                 })
             })
     }
